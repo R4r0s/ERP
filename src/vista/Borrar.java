@@ -4,6 +4,9 @@ import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JTextField;
+
+import Metodos.Bs_Empleados;
+
 import javax.swing.JLabel;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
@@ -46,6 +49,8 @@ public class Borrar {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
+		Bs_Empleados emp = new Bs_Empleados();
+		
 		textField = new JTextField();
 		textField.setBounds(10, 26, 126, 20);
 		frame.getContentPane().add(textField);
@@ -56,6 +61,13 @@ public class Borrar {
 		frame.getContentPane().add(lblNewLabel);
 		
 		JButton btnNewButton = new JButton("Borrar");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				int idq = Integer.parseInt(textField.getText());
+				emp.deleteData(idq);
+				frame.dispose();
+			}
+		});
 		btnNewButton.setBounds(335, 11, 89, 23);
 		frame.getContentPane().add(btnNewButton);
 		

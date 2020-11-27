@@ -9,7 +9,6 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import javax.persistence.TypedQuery;
-import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
 import org.hibernate.Query;
@@ -20,34 +19,35 @@ import org.hibernate.cfg.Configuration;
 
 import Clases_POJO.Empleado;
 
-public class Bs_Empleados implements Funciones{
+public class Bs_Empleados implements Funciones {
 	Session s;
+
 	public void hibernateAcces() {
 
-    	Logger.getLogger("org.hibernate").setLevel(Level.OFF);		
+		Logger.getLogger("org.hibernate").setLevel(Level.OFF);
 
-        SessionFactory sf = new Configuration().configure().buildSessionFactory();
-        s=sf.openSession();
+		SessionFactory sf = new Configuration().configure().buildSessionFactory();
+		s = sf.openSession();
 	}
 
 	@Override
 	public HashMap getData() {
 		// TODO Auto-generated method stub
 		hibernateAcces();
-		
-		HashMap<Integer, Empleado> hm = new HashMap<Integer, Empleado>();
-    	
-    	TypedQuery q= s.createQuery("from Empleado");
-    	List<Empleado> results = q.getResultList();
-    	Close();
-        Iterator<Empleado> iterador = results.iterator();
-        Empleado emp = null;
-        while (iterador.hasNext()){
-            emp = iterador.next();
 
-        	hm.put(emp.getId(), emp);
-        }
-        return hm;
+		HashMap<Integer, Empleado> hm = new HashMap<Integer, Empleado>();
+
+		TypedQuery q = s.createQuery("from Empleado");
+		List<Empleado> results = q.getResultList();
+		Close();
+		Iterator<Empleado> iterador = results.iterator();
+		Empleado emp;
+		while (iterador.hasNext()) {
+			emp = iterador.next();
+
+			hm.put(emp.getId(), emp);
+		}
+		return hm;
 	}
 
 	@Override
@@ -75,7 +75,8 @@ public class Bs_Empleados implements Funciones{
 		// TODO Auto-generated method stub
 		hibernateAcces();
 		s.beginTransaction();
-		Query q = s.createQuery("update Empleado set tlf = :tlf, n_ss = :n_ss, direccion = :direccion, apellido = :apellido, seccion = :seccion, nombre = :nombre, puesto = :puesto, dni = :dni, email = :email where id = :id");
+		Query q = s.createQuery(
+				"update Empleado set tlf = :tlf, n_ss = :n_ss, direccion = :direccion, apellido = :apellido, seccion = :seccion, nombre = :nombre, puesto = :puesto, dni = :dni, email = :email where id = :id");
 		q.setParameter("tlf", emp.getTlf());
 		q.setParameter("n_ss", emp.getN_ss());
 		q.setParameter("direccion", emp.getDireccion());
@@ -98,47 +99,31 @@ public class Bs_Empleados implements Funciones{
 		HashMap<Integer, Empleado> hm = new HashMap<Integer, Empleado>();
 		TypedQuery q = s.createQuery("from Empleado where id = :id").setParameter("id", id);
 		List<Empleado> results = q.getResultList();
-    	Close();
-        Iterator<Empleado> iterador = results.iterator();
-        Empleado emp = null;
-        while (iterador.hasNext()){
-            emp = iterador.next();
+		Close();
+		Iterator<Empleado> iterador = results.iterator();
+		Empleado emp = null;
+		while (iterador.hasNext()) {
+			emp = iterador.next();
 
-        	hm.put(emp.getId(), emp);
-        }
+			hm.put(emp.getId(), emp);
+		}
 		Close();
 		return hm;
 	}
 
-	@Override
-	public void saveData(HashMap<Integer, Empleado> datos) {
-		// TODO Auto-generated method stub
-		hibernateAcces();
-		for (Map.Entry<Integer, Empleado> entry : datos.entrySet()) {
-			Empleado emp = new Empleado();
-			emp = entry.getValue();
-			s.beginTransaction();
-			s.save(emp);
-			s.getTransaction().commit();
-		}
-		
-		Close();
-	}
 	public void Close() {
 		s.close();
 	}
 
+	@Override
 	public DefaultTableModel createTableModel() {
 		HashMap<Integer, Empleado> hm = new HashMap<Integer, Empleado>();
 		hm = getData();
-		DefaultTableModel model = new DefaultTableModel(new String[]{"Id", "Datos"}, 0);
-		
+		DefaultTableModel model = new DefaultTableModel(new String[] { "Id", "Datos" }, 0);
+
 		for (Entry<Integer, Empleado> entry : hm.entrySet()) {
-	        model.addRow(new Object[] { entry.getKey(), entry.getValue() });
-	        System.out.println(entry.getValue());
-	    }
+			model.addRow(new Object[] { entry.getKey(), entry.getValue() });
+		}
 		return model;
 	}
-	}
-
-
+}

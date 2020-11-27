@@ -15,6 +15,29 @@ public class Empleado {
 		super();
 		// TODO Auto-generated constructor stub
 	}
+	
+	public Empleado(int id, int tlf, int n_ss, String direccion, String apellido, String seccion, String nombre,
+			String puesto, String dni, String email) {
+		super();
+		this.id = id;
+		this.tlf = tlf;
+		this.n_ss = n_ss;
+		this.direccion = direccion;
+		this.apellido = apellido;
+		this.seccion = seccion;
+		this.nombre = nombre;
+		this.puesto = puesto;
+		this.dni = dni;
+		this.email = email;
+	}
+
+	@Override
+	public String toString() {
+		return "Empleado [id=" + id + ", tlf=" + tlf + ", n_ss=" + n_ss + ", direccion=" + direccion + ", apellido="
+				+ apellido + ", seccion=" + seccion + ", nombre=" + nombre + ", puesto=" + puesto + ", dni=" + dni
+				+ ", email=" + email + "]";
+	}
+
 	public int getId() {
 		return id;
 	}

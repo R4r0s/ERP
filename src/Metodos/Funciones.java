@@ -2,6 +2,8 @@ package Metodos;
 
 import java.util.HashMap;
 
+import javax.swing.table.DefaultTableModel;
+
 import Clases_POJO.Empleado;
 
 public interface Funciones {
@@ -14,6 +16,6 @@ public interface Funciones {
 	public void updateData(int id, Empleado dato);
 
 	public HashMap searchdata(int id);
-
-	public void saveData(HashMap<Integer, Empleado> datos);
+	
+	public DefaultTableModel createTableModel();
 }

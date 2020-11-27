@@ -4,6 +4,10 @@ import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JTextField;
+
+import Clases_POJO.Empleado;
+import Metodos.Bs_Empleados;
+
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -54,6 +58,8 @@ public class Editar {
 		frame.setBounds(100, 100, 326, 420);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
+		
+		Bs_Empleados emp = new Bs_Empleados();
 		
 		id_empleado = new JTextField();
 		id_empleado.setBounds(10, 11, 137, 20);
@@ -108,6 +114,19 @@ public class Editar {
 		JButton btnNewButton = new JButton("Save");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				int idq = Integer.parseInt(id_empleado.getText());
+				int tlfn = Integer.parseInt(tlf.getText());
+				int n_ss1 = Integer.parseInt(n_ss.getText());
+				String di = direccion.getText();
+				String app = apellido.getText();
+				String nom = nombre.getText();
+				String sec = seccion.getText();
+				String pu = puesto.getText();
+				String d = dni.getText();
+				String e = email.getText();
+				Empleado emple = new Empleado(idq, tlfn, n_ss1, di, app, sec, nom, pu, e, d);
+				emp.updateData(idq, emple);
+				frame.dispose();
 			}
 		});
 		btnNewButton.setBounds(211, 317, 89, 23);
