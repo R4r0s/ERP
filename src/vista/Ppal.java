@@ -4,8 +4,12 @@ import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 
+import Clases_POJO.Empleado;
+import Metodos.Bs_Empleados;
+
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.util.HashMap;
 import java.awt.event.ActionEvent;
 
 public class Ppal {
@@ -47,7 +51,11 @@ public class Ppal {
 		JButton btnNewButton = new JButton("Tablas");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-			Empleados vista= new Empleados();
+				HashMap<Integer, Empleado> hm = new HashMap<Integer, Empleado>();
+				Bs_Empleados emp = new Bs_Empleados();
+				hm = emp.getData();
+				System.out.println(hm);
+			Empleados vista= new Empleados(hm);
 			vista.newScreen();
 			frame.dispose();
 			}
