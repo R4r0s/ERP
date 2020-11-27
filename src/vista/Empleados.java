@@ -67,14 +67,32 @@ public class Empleados {
 		frame.getContentPane().add(table);
 		
 		JButton btnNewButton = new JButton("A\u00F1adir");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				Añadir vista= new Añadir();
+				vista.newScreen();
+			}
+		});
 		btnNewButton.setBounds(526, 11, 89, 23);
 		frame.getContentPane().add(btnNewButton);
 		
 		JButton btnNewButton_1 = new JButton("Borrar");
+		btnNewButton_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				Borrar vista= new Borrar();
+				vista.newScreen();
+			}
+		});
 		btnNewButton_1.setBounds(526, 45, 89, 23);
 		frame.getContentPane().add(btnNewButton_1);
 		
 		JButton btnNewButton_2 = new JButton("Editar");
+		btnNewButton_2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				Editar vista= new Editar();
+				vista.newScreen();
+			}
+		});
 		btnNewButton_2.setBounds(526, 79, 89, 23);
 		frame.getContentPane().add(btnNewButton_2);
 		
