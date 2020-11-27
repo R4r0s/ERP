@@ -40,28 +40,24 @@ public class Empleados {
 	/**
 	 * Create the application.
 	 */
-	public Empleados(HashMap<Integer, Empleado> hm) {
-		initialize(hm);
-	}
 	public Empleados() {
-		//initialize();
+		initialize();
 	}
 
 	/**
 	 * Initialize the contents of the frame.
 	 */
-	private void initialize(HashMap<Integer, Empleado> hm) {
+	private void initialize() {
 		frame = new JFrame();
 		frame.setBounds(100, 100, 635, 465);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
+		HashMap<Integer, Empleado> hm = new HashMap<Integer, Empleado>();
+		Bs_Empleados emp = new Bs_Empleados();
+
 		
-		DefaultTableModel model = new DefaultTableModel(new String[]{"id_empleado", "tlf", "n_ss", "direccion", "apellido", "seccion", "nombre", "puesto", "dni", "email"}, 0);
+		table = new JTable(emp.createTableModel());
 		
-		table = new JTable(model);
-		for (Map.Entry<Integer, Empleado> entry : hm.entrySet()) {
-	        model.addRow(new Object[] { entry.getKey(), entry.getValue() });
-	    }
 		
 		table.setBounds(10, 15, 506, 289);
 		frame.getContentPane().add(table);
