@@ -8,6 +8,8 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import javax.persistence.TypedQuery;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
 
 import org.hibernate.Query;
 import org.hibernate.Session;
@@ -125,7 +127,17 @@ public class Bs_Empleados implements Funciones{
 		s.close();
 	}
 
-
+	public DefaultTableModel createTableModel() {
+		HashMap<Integer, Empleado> hm = new HashMap<Integer, Empleado>();
+		hm = getData();
+		DefaultTableModel model = new DefaultTableModel(new String[]{"Id", "Datos"}, 0);
+		
+		for (Map.Entry<Integer, Empleado> entry : hm.entrySet()) {
+	        model.addRow(new Object[] { entry.getKey(), entry.getValue() });
+	        System.out.println(entry.getValue());
+	    }
+		return model;
+	}
 	}
 
 
