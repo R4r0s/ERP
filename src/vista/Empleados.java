@@ -7,10 +7,16 @@ import javax.swing.JTable;
 import java.awt.BorderLayout;
 import javax.swing.JButton;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
+
+import Metodos.Bs_Empleados;
+import Clases_POJO.Empleado;
 import java.awt.event.ActionListener;
+import java.util.HashMap;
+import java.util.Map;
 import java.awt.event.ActionEvent;
 
-public class Vista {
+public class Empleados {
 
 	private JFrame frame;
 	private JTable table;
@@ -22,7 +28,7 @@ public class Vista {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					Vista window = new Vista();
+					Empleados window = new Empleados();
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -34,7 +40,7 @@ public class Vista {
 	/**
 	 * Create the application.
 	 */
-	public Vista() {
+	public Empleados() {
 		initialize();
 	}
 
@@ -46,15 +52,17 @@ public class Vista {
 		frame.setBounds(100, 100, 635, 465);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
+		HashMap<Integer, Empleado> hm = new HashMap<Integer, Empleado>();
+		Bs_Empleados emp = new Bs_Empleados();
+		hm = emp.getData();
+		System.out.println(hm);
+		DefaultTableModel model = new DefaultTableModel(new String[]{"id_empleado", "tlf", "n_ss", "direccion", "apellido", "seccion", "nombre", "puesto", "dni", "email"}, 0);
 		
-		table = new JTable();
-		table.setModel(new DefaultTableModel(
-			new Object[][] {
-			},
-			new String[] {
-				"id_empleado", "tlf", "n_ss", "direccion", "apellido", "seccion", "nombre", "puesto", "dni", "email"
-			}
-		));
+		table = new JTable(model);
+		for (Map.Entry<Integer, Empleado> entry : hm.entrySet()) {
+	        model.addRow(new Object[] { entry.getKey(), entry.getValue() });
+	    }
+		
 		table.setBounds(10, 15, 506, 289);
 		frame.getContentPane().add(table);
 		

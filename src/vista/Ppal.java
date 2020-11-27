@@ -47,7 +47,7 @@ public class Ppal {
 		JButton btnNewButton = new JButton("Tablas");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-			Vista vista= new Vista();
+			Empleados vista= new Empleados();
 			vista.newScreen();
 			frame.dispose();
 			}
