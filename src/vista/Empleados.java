@@ -102,5 +102,23 @@ public class Empleados {
 		});
 		btnNewButton_3.setBounds(526, 392, 89, 23);
 		frame.getContentPane().add(btnNewButton_3);
+		btnNewButton_2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				Editar vista= new Editar();
+				vista.newScreen();
+			}
+		});
+		btnNewButton_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				Borrar vista= new Borrar();
+				vista.newScreen();
+			}
+		});
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				Añadir vista= new Añadir();
+				vista.newScreen();
+			}
+		});
 	}
 }
