@@ -1,0 +1,50 @@
+<?xml version="1.0"?>
+
+
+<hibernate-mapping>
+
+	<class name="Clases_POJO.Empleado" table="empleados">
+	
+		<id name="id" type="int">
+			<column name="id_empleado" />
+			<generator class="increment" />
+		</id>
+		
+		<property name="tlf" type="int">
+			<column name="tlf" not-null="true" />
+		</property>	
+		<property name="n_ss" type="int">
+			<column name="n_ss" length="50" not-null="true" />
+		</property>	
+
+		<property name="direccion" type="string">
+			<column name="direccion" length="50" not-null="true" />
+		</property>
+		
+        <property name="apellido" type="string">
+			<column name="apellido" length="50" not-null="true" />
+		</property>		
+		
+		<property name="seccion" type="string">
+			<column name="seccion" length="50" not-null="true" />
+		</property>
+		
+		<property name="nombre" type="string">
+			<column name="nombre" length="50" not-null="true" />
+		</property>	
+		
+		<property name="puesto" type="string">
+			<column name="puesto" length="50" not-null="true" />
+		</property>	
+		
+		<property name="dni" type="string">
+			<column name="dni" length="50" not-null="true" />
+		</property>	
+		
+		<property name="email" type="string">
+			<column name="email" length="50" not-null="true" />
+		</property>	
+		
+	</class>
+
+</hibernate-mapping>
