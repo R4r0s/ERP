@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -132,7 +133,7 @@ public class Bs_Empleados implements Funciones{
 		hm = getData();
 		DefaultTableModel model = new DefaultTableModel(new String[]{"Id", "Datos"}, 0);
 		
-		for (Map.Entry<Integer, Empleado> entry : hm.entrySet()) {
+		for (Entry<Integer, Empleado> entry : hm.entrySet()) {
 	        model.addRow(new Object[] { entry.getKey(), entry.getValue() });
 	        System.out.println(entry.getValue());
 	    }

@@ -52,7 +52,6 @@ public class Empleados {
 		frame.setBounds(100, 100, 635, 465);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
-		HashMap<Integer, Empleado> hm = new HashMap<Integer, Empleado>();
 		Bs_Empleados emp = new Bs_Empleados();
 
 		
